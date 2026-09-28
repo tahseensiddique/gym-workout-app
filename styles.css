@@ -114,3 +114,106 @@ button {
     transform: translate(-50%, -50%) scale(1.08);
   }
 }
+
+.boot-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at center, rgba(249,115,22,0.18), transparent 25%),
+    linear-gradient(135deg, #020817, #0b1120 55%, #111827);
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.boot-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.boot-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  animation: logoPop 1.2s ease-out both;
+}
+
+.boot-logo {
+  display: grid;
+  place-items: center;
+  width: 88px;
+  height: 88px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #f97316, #ef4444);
+  box-shadow: 0 0 25px rgba(249,115,22,0.6);
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: white;
+}
+
+.boot-text-block {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.boot-text-block .boot-kicker {
+  margin: 0;
+  font-size: 0.62rem;
+  color: rgba(255,255,255,0.6);
+}
+
+.boot-text-block h2 {
+  margin: 0.25rem 0 0;
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  letter-spacing: 0.16em;
+}
+
+.boot-progress-track {
+  position: absolute;
+  left: 50%;
+  bottom: 14%;
+  width: min(420px, 68vw);
+  height: 8px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  overflow: hidden;
+}
+
+.boot-progress-bar {
+  height: 100%;
+  width: 0%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #f97316, #38bdf8, #34d399);
+  box-shadow: 0 0 18px rgba(56,189,248,0.8);
+  animation: loadingBar 2.2s ease-in-out forwards;
+}
+
+@keyframes loadingBar {
+  0% {
+    width: 0%;
+  }
+  45% {
+    width: 65%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes logoPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) translateY(30px);
+  }
+  65% {
+    opacity: 1;
+    transform: scale(1.05) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
